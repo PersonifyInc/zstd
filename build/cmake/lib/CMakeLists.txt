@@ -158,6 +158,16 @@ SET_TARGET_PROPERTIES(
         PREFIX ""
         OUTPUT_NAME ${SHARED_LIBRARY_OUTPUT_NAME})
 
+target_compile_options(libzstd_shared PRIVATE $<$<CONFIG:DEBUG>:${ZSTD_C_FLAGS_DEBUG}>
+                                              $<$<CONFIG:RELEASE>:${ZSTD_C_FLAGS_RELEASE}>
+                                              $<$<CONFIG:MINSIZEREL>:${ZSTD_C_FLAGS_MINSIZEREL}>
+                                              $<$<CONFIG:RELWITHDEBINFO>:${ZSTD_C_FLAGS_RELWITHDEBINFO}>)
+
+target_compile_options(libzstd_static PRIVATE $<$<CONFIG:DEBUG>:${ZSTD_C_FLAGS_DEBUG}>
+                                              $<$<CONFIG:RELEASE>:${ZSTD_C_FLAGS_RELEASE}>
+                                              $<$<CONFIG:MINSIZEREL>:${ZSTD_C_FLAGS_MINSIZEREL}>
+					      $<$<CONFIG:RELWITHDEBINFO>:${ZSTD_C_FLAGS_RELWITHDEBINFO}>)
+
 IF (UNIX)
     IF ("${PREFIX}" STREQUAL "")
         SET(PREFIX /usr/local)

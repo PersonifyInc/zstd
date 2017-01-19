@@ -8,7 +8,13 @@
 # ################################################################
 
 PROJECT(zstd)
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.7)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
+
+#-----------------------------------------------------------------------------
+# Add extra compilation flags
+#-----------------------------------------------------------------------------
+INCLUDE(CMakeModules/AddExtraCompilationFlags.cmake)
+ADD_EXTRA_COMPILATION_FLAGS()
 
 OPTION(ZSTD_LEGACY_SUPPORT "LEGACY SUPPORT" OFF)
 
@@ -23,12 +29,6 @@ ENDIF (ZSTD_LEGACY_SUPPORT)
 ADD_SUBDIRECTORY(lib)
 ADD_SUBDIRECTORY(programs)
 ADD_SUBDIRECTORY(tests)
-
-#-----------------------------------------------------------------------------
-# Add extra compilation flags
-#-----------------------------------------------------------------------------
-INCLUDE(CMakeModules/AddExtraCompilationFlags.cmake)
-ADD_EXTRA_COMPILATION_FLAGS()
 
 ADD_CUSTOM_TARGET(clean-all
    COMMAND ${CMAKE_BUILD_TOOL} clean
