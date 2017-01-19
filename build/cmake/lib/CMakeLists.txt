@@ -168,7 +168,7 @@ target_compile_options(libzstd_static PRIVATE $<$<CONFIG:DEBUG>:${ZSTD_C_FLAGS_D
                                               $<$<CONFIG:MINSIZEREL>:${ZSTD_C_FLAGS_MINSIZEREL}>
 					      $<$<CONFIG:RELWITHDEBINFO>:${ZSTD_C_FLAGS_RELWITHDEBINFO}>)
 
-IF (UNIX)
+IF (0)
     IF ("${PREFIX}" STREQUAL "")
         SET(PREFIX /usr/local)
     ENDIF()
@@ -219,4 +219,4 @@ IF (UNIX)
 
     ADD_CUSTOM_TARGET(uninstall
             COMMAND ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}/cmake_uninstall.cmake)
-ENDIF (UNIX)
+ENDIF (0)
